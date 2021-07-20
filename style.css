@@ -1,0 +1,322 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Teko&display=swap");
+
+:root {
+  --black: #0b121d;
+  --blue: #1e42ff;
+  --white: #ecf1f3;
+  --sec-rotation: 0deg;
+  --min-rotation: 0deg;
+  --hour-rotation: 0deg;
+}
+
+* {
+  padding: 0%;
+  margin: 0px;
+  box-sizing: border-box;
+  transition: color 0.2s;
+  transition: background-color 0.2s;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background: var(--black);
+  overflow: hidden;
+}
+
+.loader_bg {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--blue);
+  position: fixed;
+  z-index: 999999999;
+  font-family: "Roboto";
+  color: var(--white);
+  text-align: center;
+  transition: background-color 0.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.loader_bg > p {
+  max-width: 300px;
+  font-size: 45px;
+  text-align: center;
+}
+.loader_bg > img {
+  width: 280px;
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+nav {
+  padding: 34px 2.5vw;
+  padding-bottom: 0;
+}
+
+nav > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+#logo {
+  font-size: 30px;
+  color: var(--blue);
+  font-family: "Rubik Mono One", sans-serif;
+  padding: 10px 2rem;
+  padding-bottom: 0px;
+}
+#logo span {
+  color: var(--white);
+  font-family: "Rubik Mono One", sans-serif;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--black);
+  height: 100vh;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  padding: 20px 0px;
+  overflow: hidden;
+  width: 0px;
+  transition: width 0.2s;
+  z-index: 999999;
+}
+
+.menuopen {
+  width: 400px;
+}
+
+.menuicon {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  cursor: pointer;
+}
+.menuicon h4 {
+  font-family: "Roboto";
+  color: var(--white);
+  font-size: 22px;
+  padding: 10px;
+}
+
+.menu > div {
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+.menu_icon {
+  padding: 10px 2rem;
+  width: fit-content;
+  padding-bottom: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999999;
+  cursor: pointer;
+}
+
+.menu_icon > div {
+  width: 40px;
+  background-color: var(--white);
+  border-radius: 4px;
+  height: 5px;
+  transition: all 0.2s;
+}
+.menu_icon > div::after,
+.menu_icon > div::before {
+  content: " ";
+  width: 40px;
+  background-color: var(--white);
+  border-radius: 4px;
+  height: 5px;
+  position: absolute;
+  transition: all 0.3s;
+}
+.menu_icon > div::after {
+  transform: translateY(+10px);
+}
+.menu_icon > div::before {
+  transform: translateY(-10px);
+}
+.open > div {
+  background: transparent;
+}
+.open > div::after {
+  transform: translateY(0px) rotate(45deg);
+}
+.open > div::before {
+  transform: translateY(0px) rotate(-45deg);
+}
+.fas {
+  font-size: 35px;
+  color: var(--white);
+  cursor: pointer;
+}
+#clock {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  padding-top: 10px;
+  justify-content: space-evenly;
+  align-items: center;
+}
+#clock > div:nth-child(1) {
+  transform: translate(0%, 0%);
+  min-width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  border: 45px solid var(--blue);
+  box-shadow: 0 0 15px -3px black inset;
+  background-color: var(--white);
+}
+
+#clock div:nth-child(2) div {
+  font-size: 70px;
+  font-family: "Teko", sans-serif;
+  color: var(--white);
+}
+
+.needlehour {
+  background-color: var(--black);
+  width: 30%;
+  height: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(0%, -50%) rotate(var(--hour-rotation));
+  transform-origin: 0%;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+  box-shadow: 0 0 10px -2px black;
+}
+.needlemin {
+  background-color: var(--black);
+  width: 40%;
+  height: 7px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(0%, -50%) rotate(var(--min-rotation));
+  transform-origin: 0%;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+  box-shadow: 0 0 10px -2px black;
+}
+.needlesec {
+  background-color: var(--black);
+  width: 42%;
+  height: 5px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(0%, -50%) rotate(var(--sec-rotation));
+  transform-origin: 0%;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+  box-shadow: 0 0 10px -1px black;
+}
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 7%;
+  width: 7%;
+  background-color: red;
+  z-index: 99;
+  border-radius: 50%;
+  box-shadow: 0 0 10px 0px black;
+}
+#clock > div > img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+
+#clock > div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 85%;
+  color: var(--white);
+}
+
+@media only screen and (max-width: 500px) {
+  nav {
+    padding: 40px 5vw;
+    padding-bottom: 0;
+    min-width: 235px;
+  }
+
+  .loader_bg > p {
+    width: 200px;
+  }
+
+  .menuopen {
+    width: 100vw;
+  }
+
+  #logo {
+    padding: 0 10px;
+  }
+  .menu_icon {
+    padding: 0 10px;
+  }
+}
+@media only screen and (max-width: 900px) {
+  #clock > div:nth-child(2) {
+    position: absolute;
+    justify-content: center;
+  }
+  #clock div:nth-child(2) div {
+    font-size: 30px;
+    font-family: "Teko", sans-serif;
+    color: var(--black);
+    z-index: 9;
+    text-align: center;
+  }
+  .year{
+    padding-top: 20px;
+  }
+  .month{
+    padding-bottom: 20px;
+  }
+  .center {
+    z-index: 999;
+  }
+  .needlehour,
+  .needlemin,
+  .needlesec {
+    z-index: 99;
+  }
+}
+@media only screen and (max-width: 370px){
+  #clock > div:nth-child(1){
+    min-width: 400px;
+    height: 400px;
+  }
+  #clock div:nth-child(2) div {
+    font-size: 20px;
+    font-family: "Teko", sans-serif;
+    color: var(--black);
+    z-index: 9;
+    text-align: center;
+  }
+}
